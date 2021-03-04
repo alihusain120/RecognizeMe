@@ -1,4 +1,9 @@
-from keras_vggface.vggface import VGGFace
+
+# This code adapted from this blog tutorial:
+# https://www.dlology.com/blog/live-face-identification-with-pre-trained-vggface2-model/
+# GithubRepo of original author: https://github.com/Tony607/Keras_face_identification_realtime
+
+
 from keras.preprocessing import image
 import numpy as np
 from keras_vggface import utils
