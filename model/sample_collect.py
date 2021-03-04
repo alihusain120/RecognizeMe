@@ -8,7 +8,7 @@ This cell will turn on webcam and take photos, cropping a face if detected,
 and save it to directory ./datasets/name/name-x.png. 
 '''
 
-TEAMMATE_NAME = 'ali'  # Insert name here!!
+TEAMMATE_NAME = 'x'  # Insert name here!!
 os.makedirs("./datasets/" + TEAMMATE_NAME)
 
 # Initialize Webcam

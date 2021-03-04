@@ -61,7 +61,9 @@ def main():
         return np.array(fvecs).sum(axis=0) / len(fvecs)  # Return mean feature map as np array
 
     folders = list(glob.iglob(os.path.join(DATASETS, '*')))
+    os.makedirs(DATASETS, exist_ok=True)
     names = [os.path.basename(folder) for folder in folders]
+
 
     '''
     for i, folder in enumerate(folders):
@@ -87,7 +89,7 @@ def main():
         precompute_features.append({"name": name, "features": mean_features})
 
     # https://stackoverflow.com/questions/8968884/python-serialization-why-pickle
-    pickle_stuff("./datasets/precompute_features.pickle", precompute_features)
+    pickle_stuff("./precompute_features.pickle", precompute_features)
 
 if __name__ == "__main__":
     main()

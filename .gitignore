@@ -1,8 +1,5 @@
-.ipynb_checkpoints/*
+*/.ipynb_checkpoints/*
 .DS_STORE
 .idea
 venv/*
-model/datasets/ali/*
-model/datasets/daniel/*
-model/datasets/alex/*
-model/datasets/tej/*
+model/datasets/*
