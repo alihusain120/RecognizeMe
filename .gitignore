@@ -3,3 +3,4 @@
 .idea
 venv/*
 model/datasets/*
+model/__pycache__/*
