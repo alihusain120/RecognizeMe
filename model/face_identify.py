@@ -3,11 +3,13 @@
 # https://www.dlology.com/blog/live-face-identification-with-pre-trained-vggface2-model/
 # GithubRepo of original author: https://github.com/Tony607/Keras_face_identification_realtime
 
+import pickle
 from keras_vggface.vggface import VGGFace
 import scipy.spatial as spatial
 import numpy as np
+import time
 import cv2
-import pickle
+
 
 
 # Helper method to load byte stream of name/features map
@@ -105,7 +107,7 @@ class FaceIdentify(object):
         # infinite loop, break by key ESC
         while True:
             if not video_capture.isOpened():
-                sleep(5)
+                time.sleep(5)
             # Capture frame-by-frame
             ret, frame = video_capture.read()
             gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
@@ -140,16 +142,57 @@ class FaceIdentify(object):
         cv2.destroyAllWindows()
 
     # TODO: Complete this
+    def attempt_single_login(self):
+
+        face_cascade = cv2.CascadeClassifier(self.CASE_PATH)
+
+        # 0 means the default video capture device in OS
+        video_capture = cv2.VideoCapture(0)
+
+
+
+        if not video_capture.isOpened():
+            time.sleep(5)
+        # Capture frame-by-frame
+        ret, frame = video_capture.read()
+        gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+        faces = face_cascade.detectMultiScale(
+            gray,
+            scaleFactor=1.2,
+            minNeighbors=10,
+            minSize=(64, 64)
+        )
+
+        # placeholder for cropped faces
+        face_imgs = np.empty((len(faces), self.face_size, self.face_size, 3))
+
+        for i, face in enumerate(faces):
+            face_img, cropped = self.crop_face(frame, face, margin=10, size=self.face_size)
+            (x, y, w, h) = cropped
+            cv2.rectangle(frame, (x, y), (x + w, y + h), (255, 200, 0), 2)
+            face_imgs[i, :, :, :] = face_img
+        if len(face_imgs) > 0:
+            # generate features for each face
+            features_faces = self.model.predict(face_imgs)
+            predicted_names = [self.identify_face(features_face) for features_face in features_faces]
+            return predicted_names[0]
+        else:
+            return "UNRECOGNIZED"
+
+
+
+
     def attempt_login(self):
         face_cascade = cv2.CascadeClassifier(self.CASE_PATH)
 
         # 0 means the default video capture device in OS
         video_capture = cv2.VideoCapture(0)
 
-        if not video_capture.isOpened():
-            sleep(5)
+
 
         while True:
+            if not video_capture.isOpened():
+                time.sleep(5)
             # Capture frame-by-frame
             ret, frame = video_capture.read()
             gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
@@ -172,8 +215,9 @@ class FaceIdentify(object):
                 # generate features for each face
                 features_faces = self.model.predict(face_imgs)
                 predicted_names = [self.identify_face(features_face) for features_face in features_faces]
+                return predicted_names[0]
             # draw results
-
+            
             # TODO: this is where we should login or reject, given name or "UNRECOGNIZED" from identify_face()
             for i, face in enumerate(faces):
                 label = "{}".format(predicted_names[i])
@@ -191,7 +235,8 @@ class FaceIdentify(object):
 
 def main():
     face = FaceIdentify()
-    face.detect_face()
+    name = face.attempt_login()
+    print(name)
 
 
 if __name__ == "__main__":
