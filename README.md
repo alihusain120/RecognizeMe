@@ -3,6 +3,9 @@ Simple web app to detect and recognize faces
 
 Main work is done in model/
 
+__RecognizeMe.ipynb__:
+  This has all the main functionality written and tested that was then translated onto the .py files. For some reason keras_vggface module doesn't load in the .py scripts sometimes, so if replicating it try to use this notebook's cells rather than corresponding .py files.
+
 __sample_collect.py__:
 
   Runs a script with openCV to snap 300 photos from system webcam. Each photo is detected for a face using OpenCV's Cascade Classifier. If a face is detected it is cropped and saved. 
