@@ -24,12 +24,12 @@ class FaceIdentify(object):
     """
     CASE_PATH = cv2.data.haarcascades + 'haarcascade_frontalface_default.xml'
 
-    def __new__(cls, precompute_features_file="./datasets/precompute_features.pickle"):
+    def __new__(cls, precompute_features_file="./precompute_features.pickle"):
         if not hasattr(cls, 'instance'):
             cls.instance = super(FaceIdentify, cls).__new__(cls)
         return cls.instance
 
-    def __init__(self, precompute_features_file="./datasets/precompute_features.pickle"):
+    def __init__(self, precompute_features_file="./precompute_features.pickle"):
         self.face_size = 224
         self.precompute_features_map = load_stuff(precompute_features_file)
         print("Loading VGG Face model...")
