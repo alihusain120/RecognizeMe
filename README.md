@@ -29,7 +29,7 @@ __face_identify.py__:
 
 ATTRIBUTIONS: 
 
-This project and some code (attributed in the .py files respectively) was adapted from the following sources: 
+This project (attributed in .py files respectively) was adapted from the following sources: 
 
 1. https://www.dlology.com/blog/live-face-identification-with-pre-trained-vggface2-model/ and the corresponding GitHub repo: https://github.com/Tony607/Keras_face_identification_realtime.
 
@@ -38,3 +38,5 @@ This project and some code (attributed in the .py files respectively) was adapte
 3. https://machinelearningmastery.com/how-to-perform-face-detection-with-classical-and-deep-learning-methods-in-python-with-keras/
 
 4. https://medium.com/@chiraggoelit/face-recognition-using-transfer-learning-9986728c443d
+
+5. https://cs-people.bu.edu/dharmesh/teaching/cs501_t2_sp21/assignments/assignment3/
