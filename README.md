@@ -12,12 +12,17 @@ __sample_collect.py__:
   
 __precompute_features__:
 
-  Runs through each image for each team member inside datasets/ (gitignored the image datasets). For each person, this file computes the feature map using the resnet50 model from VGGFace2.
-  The top layer of the resnet50 model is not set, so our output is a tensor of features. This tensor is the mean feature map for each team member, and it is saved as a numpy array.
+  Runs through each image for each team member inside datasets/ (gitignored the image datasets). For each person, this file computes the feature map for each photo of that person using the resnet50 model from VGGFace2.
+  The top layer of the resnet50 model is not set, so our output is a tensor of features. The mean of the tensors for each photo taken, and the single mean features tensor for each team member is saved as a numpy array.
   
-  All the {Name; Features} pairs are saved and pickled
+  All the {Name; FeaturesnpArray} pairs are saved and pickled
   
   
 __face_identify.py__:
 
-  Main class to run the face detection and recognition. Tries to detect face through webcam, and if successful, compares the face to each of the saved precomputed feature maps and returns result.
+  Main class with functionality to run the face detection and recognition. Tries to detect face through webcam, and if successful, compares the face to each of the saved precomputed feature maps and returns result.
+  
+  __app.py__
+
+  app.py is up-to-date on the __development branch__ only, not the master/main. One can run app.py and test on localhost.
+
