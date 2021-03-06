@@ -27,4 +27,14 @@ __face_identify.py__:
   app.py is up-to-date on the __development branch__ only, not the master/main. One can run app.py and test on localhost.
 
 
-ATTRIBUTION: As stated in each respective .py file, this model and source code was adapted from this blog article: https://www.dlology.com/blog/live-face-identification-with-pre-trained-vggface2-model/ and the corresponding GitHub repo: https://github.com/Tony607/Keras_face_identification_realtime.
+ATTRIBUTIONS: 
+
+This project and some code (attributed in the .py files respectively) was adapted from the following sources: 
+
+1. https://www.dlology.com/blog/live-face-identification-with-pre-trained-vggface2-model/ and the corresponding GitHub repo: https://github.com/Tony607/Keras_face_identification_realtime.
+
+2. https://machinelearningmastery.com/how-to-perform-face-recognition-with-vggface2-convolutional-neural-network-in-keras/
+
+3. https://machinelearningmastery.com/how-to-perform-face-detection-with-classical-and-deep-learning-methods-in-python-with-keras/
+
+4. https://medium.com/@chiraggoelit/face-recognition-using-transfer-learning-9986728c443d
