@@ -24,7 +24,7 @@ __face_identify.py__:
   
   __app.py__
 
-  app.py is up-to-date on the __development branch__ only, not the master/main. One can run app.py and test on localhost.
+  One can run app.py and test on localhost.
 
 
 ATTRIBUTIONS: 
